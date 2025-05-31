@@ -1,0 +1,46 @@
+{% extends 'main.html' %} {% block content %}
+
+<div>
+  <h1>I Wanna be a part of!</h1>
+  <hr />
+</div>
+
+{% if page == 'login' %}
+<div>
+  <form method="POST" action="">
+    {% csrf_token %}
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required />
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required />
+    <button type="submit">Login</button>
+  </form>
+  <div>
+    <p>
+      Don't have an account? <a href="{% url 'register' %}">Register here</a>
+    </p>
+  </div>
+</div>
+
+{% endif %} {% if page == 'register' %}
+
+<div>
+  <form method="POST" action="">
+    {% csrf_token %}
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required />
+
+    <label for="password1">Password:</label>
+    <input type="password" id="password1" name="password1" required />
+
+    <label for="password2">Confirm Password:</label>
+    <input type="password" id="password2" name="password2" required />
+
+    <button type="submit">Register</button>
+  </form>
+  <div>
+    <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+  </div>
+</div>
+{% endif %} {% endblock content %}

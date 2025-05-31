@@ -1,0 +1,21 @@
+<style>
+  .all-alone {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+</style>
+
+<h3>Browse Topics</h3>
+<hr />
+<div class="all-alone">
+  <a href="{%url 'home' %}">All</a>
+  <h3>({{topics_count}})</h3>
+</div>
+
+{% for topic in topics %}
+<div>
+  <a href="{%url 'home' %}?q={{topic.name}}">{{topic.name}}</a>
+</div>
+{% endfor %}

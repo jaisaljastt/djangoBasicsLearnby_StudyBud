@@ -1,0 +1,46 @@
+<style>
+  .navbar {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; /* logo | search | user links */
+    align-items: center;
+    background-color: #2c3e50;
+    color: white;
+  }
+
+  .navbar form {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+
+  .hi-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+</style>
+
+<div class="navbar">
+  <!-- Logo -->
+  <a href="/"><h1>Logo</h1></a>
+
+  <!-- Search Form -->
+  <form action="{% url 'home' %}" method="GET">
+    <input type="text" name="q" placeholder="Search..." />
+    <button type="submit">Search</button>
+  </form>
+
+  <!-- Auth Links -->
+  <div class="hi-user">
+    {% if request.user.is_authenticated %}
+    <p>Welcome, {{ request.user.username }}!</p>
+    <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+    <a href="{% url 'login' %}">Login</a>
+    <a href="{% url 'register' %}">Register</a>
+    {% endif %}
+  </div>
+</div>
+
+<hr />
